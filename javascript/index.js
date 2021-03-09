@@ -3,14 +3,25 @@ const chronometer = new Chronometer();
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 btnLeft.onclick = function(){
-  btnLeft.setAttribute('class','btn stop');
-  btnLeft.innerHTML = 'STOP';
-  chronometer.startClick(printTime);
+  if(btnLeft.innerHTML === 'START') {
+    btnLeft.setAttribute('class','btn stop');
+    btnLeft.innerHTML = 'STOP';
+    chronometer.startClick(printTime);
+  } else {
+    btnLeft.setAttribute('class','btn start');
+    btnLeft.innerHTML = 'START';
+    chronometer.stopClick()
+  }
 }
 const btnRight = document.getElementById('btnRight');
 btnRight.onclick = function(){
-  btnRight.setAttribute('class', 'btn split');
-  btnRight.innerHTML = 'SPLIT';
+  if (btnRight.innerHTML === "RESET") {
+    btnRight.setAttribute('class', 'btn split');
+    btnRight.innerHTML = 'SPLIT';
+  } else {
+    btnRight.setAttribute('class', 'btn reset');
+    btnRight.innerHTML = 'RESET';
+  }
 }
 
 
@@ -24,15 +35,20 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.splitClick();
+  minDec.innerHTML = minutes[0]
+  minUni.innerHTML = minutes[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.splitClick();  
+  secDec.innerHTML = seconds[3]  
+  secUni.innerHTML = seconds[4]
 }
 
 // ==> BONUS
