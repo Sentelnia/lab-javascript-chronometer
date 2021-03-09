@@ -2,7 +2,17 @@ const chronometer = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
+btnLeft.onclick = function(){
+  btnLeft.setAttribute('class','btn stop');
+  btnLeft.innerHTML = 'STOP';
+  chronometer.startClick(printTime);
+}
 const btnRight = document.getElementById('btnRight');
+btnRight.onclick = function(){
+  btnRight.setAttribute('class', 'btn split');
+  btnRight.innerHTML = 'SPLIT';
+}
+
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
