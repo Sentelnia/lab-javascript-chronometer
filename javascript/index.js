@@ -74,7 +74,10 @@ function setStartBtn() {
 
 function setResetBtn() {
   clearSplits();
-  chronometer.resetClick();
+  secUni.innerHTML = chronometer.resetClick()
+  secDec.innerHTML = chronometer.resetClick()
+  minDec.innerHTML = chronometer.resetClick()
+  minUni.innerHTML = chronometer.resetClick()
 }
 
 // Start/Stop Button
